@@ -1,5 +1,7 @@
 server:
   port: 12000
+  servlet:
+    context-path: /report
 spring:
   application:
     name: report
