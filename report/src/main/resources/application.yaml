@@ -3,6 +3,9 @@ server:
   servlet:
     context-path: /report
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   application:
     name: report
   cloud:
@@ -18,3 +21,14 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: true
+      logic-not-delete-value: false
+#      type-aliases-package: com.emall.entity
+
+
+logging:
+  level:
+    com.booklendingsystem.admin: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
