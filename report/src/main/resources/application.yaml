@@ -1,5 +1,5 @@
 server:
-  port: 12000
+  port: 12001
   servlet:
     context-path: /report
 spring:
@@ -25,7 +25,6 @@ mybatis-plus:
       logic-delete-value: true
       logic-not-delete-value: false
 #      type-aliases-package: com.emall.entity
-
 
 logging:
   level:

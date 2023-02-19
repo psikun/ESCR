@@ -12,6 +12,7 @@
         <module>gateway</module>
         <module>report</module>
         <module>common</module>
+        <module>auth</module>
     </modules>
 
     <!--dependencyManagement 标签用于控制子模块的依赖版本等信息 -->
@@ -64,7 +65,23 @@
                 <artifactId>hutool-all</artifactId>
                 <version>5.8.5</version>
             </dependency>
-
+            <!--redis依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+            </dependency>
+            <!--fastjson依赖-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.33</version>
+            </dependency>
+            <!--jwt依赖-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <properties>
