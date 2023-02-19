@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>gateway</module>
+        <module>report</module>
     </modules>
 
     <!--dependencyManagement 标签用于控制子模块的依赖版本等信息 -->

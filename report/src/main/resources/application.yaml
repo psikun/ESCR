@@ -1,0 +1,8 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: report
+  cloud:
+    nacos:
+      server-addr: localhost:8848
