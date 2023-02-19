@@ -11,6 +11,7 @@
     <modules>
         <module>gateway</module>
         <module>report</module>
+        <module>common</module>
     </modules>
 
     <!--dependencyManagement 标签用于控制子模块的依赖版本等信息 -->
@@ -47,6 +48,13 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.31</version>
             </dependency>
+            <!-- mybatis-plus-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.3.1</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
