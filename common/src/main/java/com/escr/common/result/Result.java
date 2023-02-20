@@ -1,4 +1,4 @@
-package result;
+package com.escr.common.result;
 
 /**
  * @author psikun
