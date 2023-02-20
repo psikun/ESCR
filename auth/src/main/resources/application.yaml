@@ -1,4 +1,3 @@
-
 server:
   port: 12000
   servlet:
@@ -17,18 +16,37 @@ spring:
     url: jdbc:mysql://localhost:3306/escr_auth?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: psikun
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 3000ms
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
       logic-delete-field: deleted
-      logic-delete-value: true
-      logic-not-delete-value: false
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 #      type-aliases-package: com.emall.entity
 
 logging:
   level:
-    com.booklendingsystem.admin: debug
+    com.escr.auth: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+
+jwt:
+  secret: ESCR
+  expiration: 604800
+
+
