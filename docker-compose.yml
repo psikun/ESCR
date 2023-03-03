@@ -1,0 +1,48 @@
+version: "3.2"
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.0
+    container_name: nacos
+    restart: always
+    environment:
+      MODE: standalone
+    ports:
+      - "8848:8848"
+  mysql:
+    image: mysql:8.0.31
+    container_name: mysql
+    restart: always #重启docker引擎后该容器也重启
+    environment:
+      MYSQL_ROOT_PASSWORD: psikun
+    volumes:
+      - "~/database/mysql/data:/var/lib/mysql"
+      - "~/database/mysql/conf:/etc/mysql/conf.d/"
+      - "~/database/mysql/log:/var/log/mysql"
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:7.0.7
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      #数据和配置挂载
+      - "~/database/redis/redis.conf:/usr/local/etc/redis/redis.conf:rw"
+      - "~/database/redis/data:/data"
+    command: /bin/bash -c "redis-server /usr/local/etc/redis/redis.conf " #使用command可以覆盖容器启动后默认执行的命令。这里启动执行指定的redis.conf文件
+  rabbitmq:
+    restart: always
+    image: rabbitmq:management
+    container_name: rabbitmq
+    hostname: rabbit
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      TZ: Asia/Shanghai
+      RABBITMQ_DEFAULT_USER: psikun
+      RABBITMQ_DEFAULT_PASS: psikun
+    volumes:
+      - "~/database/rabbitmq/data:/var/lib/rabbitmq"
+      - "~/database/rabbitmq/conf:/etc/rabbitmq"
