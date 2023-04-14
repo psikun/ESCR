@@ -1,6 +1,7 @@
 package com.escr.auth.config;
 
 import com.escr.auth.filter.JwtAuthenticationTokenFilter;
+import com.escr.auth.handler.AccessDeniedHandlerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
@@ -27,6 +30,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+    @Autowired
+    private AuthenticationEntryPoint authenticationEntryPoint;
+
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
 
 
     /**
@@ -53,6 +62,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 配置认证过滤器
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        // 配置异常过滤器
+        http.exceptionHandling()
+                // 配置认证失败过滤器
+                .authenticationEntryPoint(authenticationEntryPoint)
+                // 配置权限不足过滤器
+                .accessDeniedHandler(accessDeniedHandler);
     }
 
     @Bean
