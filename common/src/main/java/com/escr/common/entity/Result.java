@@ -1,4 +1,4 @@
-package com.escr.common.result;
+package com.escr.common.entity;
 
 /**
  * @author psikun

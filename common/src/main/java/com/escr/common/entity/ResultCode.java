@@ -1,4 +1,4 @@
-package com.escr.common.result;
+package com.escr.common.entity;
 
 public enum ResultCode {
     // 操作成功
