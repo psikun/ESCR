@@ -43,6 +43,10 @@ public class Result<T> {
         return new Result<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
     }
 
+    public static <T> Result<T> success(String message) {
+        return new Result<>(ResultCode.SUCCESS.getCode(), message, null);
+    }
+
     /**
      * 成功返回结果(重载)
      *
@@ -107,7 +111,7 @@ public class Result<T> {
     }
 
     public static <T> Result<T> unauthorized(String message) {
-        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), null);
+        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), message, null);
 
     }
 

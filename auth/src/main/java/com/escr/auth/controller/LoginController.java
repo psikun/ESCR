@@ -5,9 +5,7 @@ import com.escr.auth.service.LoginService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.escr.common.result.Result;
 
 import java.util.HashMap;
@@ -35,7 +33,19 @@ public class LoginController {
             map.put("token", token);
             return Result.success(map, "登陆成功");
         } else {
-            return Result.failed("登录失败");
+            return Result.unauthorized("用户名或密码错误");
         }
     }
+
+    @ApiOperation("注销接口")
+    @GetMapping("/logoff")
+    public Result<String> logout() {
+        if (loginService.logout()) {
+            return Result.success("退出成功");
+        } else {
+            return Result.failed("退出失败");
+        }
+    }
+
+
 }
