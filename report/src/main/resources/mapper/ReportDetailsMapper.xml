@@ -15,7 +15,7 @@
         <result property="transportation" column="transportation" jdbcType="VARCHAR"/>
         <result property="trafficDetails" column="traffic_details" jdbcType="VARCHAR"/>
         <result property="reason" column="reason" jdbcType="VARCHAR"/>
-        <result property="the48HoursNucleicAcid" column="48_hours_nucleic_acid" jdbcType="TINYINT"/>
+        <result property="the48HoursNucleicAcid" column="the_48_hours_nucleic_acid" jdbcType="TINYINT"/>
         <result property="vaccinationQuantity" column="vaccination_quantity" jdbcType="INTEGER"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
