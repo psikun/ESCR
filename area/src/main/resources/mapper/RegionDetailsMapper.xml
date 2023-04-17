@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.escr.area.mapper.RegionDetailsMapper">
+
+    <resultMap id="BaseResultMap" type="com.escr.area.entity.RegionDetails">
+            <id property="regionId" column="region_id" jdbcType="BIGINT"/>
+            <result property="province" column="province" jdbcType="VARCHAR"/>
+            <result property="city" column="city" jdbcType="VARCHAR"/>
+            <result property="county" column="county" jdbcType="VARCHAR"/>
+            <result property="town" column="town" jdbcType="VARCHAR"/>
+            <result property="village" column="village" jdbcType="VARCHAR"/>
+            <result property="riskLevel" column="risk_level" jdbcType="INTEGER"/>
+            <result property="newInfection" column="new_infection" jdbcType="INTEGER"/>
+            <result property="existingInfection" column="existing_infection" jdbcType="INTEGER"/>
+            <result property="recovered" column="recovered" jdbcType="INTEGER"/>
+            <result property="death" column="death" jdbcType="INTEGER"/>
+            <result property="policy" column="policy" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        region_id,province,city,
+        county,town,village,
+        risk_level,new_infection,existing_infection,
+        recovered,death,policy,
+        create_time,update_time,deleted
+    </sql>
+</mapper>
