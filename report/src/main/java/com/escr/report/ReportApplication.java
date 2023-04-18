@@ -8,13 +8,14 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @author psikun
  */
-@SpringBootApplication
+
+@SpringBootApplication(scanBasePackages = {"com.escr.report", "com.escr.common"})
 @EnableDiscoveryClient
 @MapperScan("com.escr.report.mapper")
 public class ReportApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ReportApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ReportApplication.class, args);
+    }
 
 }

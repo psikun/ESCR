@@ -1,4 +1,4 @@
-package com.escr.report.config;
+package com.escr.common.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * MybatisConfig
  */
 @Configuration
-@MapperScan("com.escr.report.mapper")
 public class MybatisConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
