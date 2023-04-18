@@ -5,7 +5,7 @@
 <mapper namespace="com.escr.report.mapper.ReportDetailsMapper">
 
     <resultMap id="BaseResultMap" type="com.escr.report.entity.ReportDetails">
-        <id property="id" column="id" jdbcType="BIGINT"/>
+        <id property="reportId" column="report_id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
@@ -15,18 +15,18 @@
         <result property="transportation" column="transportation" jdbcType="VARCHAR"/>
         <result property="trafficDetails" column="traffic_details" jdbcType="VARCHAR"/>
         <result property="reason" column="reason" jdbcType="VARCHAR"/>
-        <result property="the48HoursNucleicAcid" column="the_48_hours_nucleic_acid" jdbcType="TINYINT"/>
+        <result property="nucleicAcid" column="nucleic_acid" jdbcType="TINYINT"/>
         <result property="vaccinationQuantity" column="vaccination_quantity" jdbcType="INTEGER"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-        <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+        <result property="deleted" column="deleted" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,name,id_card,
+        report_id,name,id_card,
         phone,source,healthy,
         destination,transportation,traffic_details,
-        reason,48_hours_nucleic_acid,vaccination_quantity,
+        reason,nucleic_acid,vaccination_quantity,
         create_time,update_time,deleted
     </sql>
 </mapper>

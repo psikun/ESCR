@@ -25,7 +25,7 @@ public class ReportDetails implements Serializable {
      * 主键
      */
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Long reportId;
 
     /**
      * 报备人员姓名
@@ -75,7 +75,7 @@ public class ReportDetails implements Serializable {
     /**
      * 是否有48小时核酸记录
      */
-    private Integer the48HoursNucleicAcid;
+    private Boolean nucleicAcid;
 
     /**
      * 疫苗接种数量
@@ -95,7 +95,7 @@ public class ReportDetails implements Serializable {
     /**
      * 逻辑删除
      */
-    private Integer deleted;
+    private Boolean deleted;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -1,10 +1,7 @@
 package com.escr.report.mapper;
 
-import com.escr.report.entity.ReportDetails;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-
-import javax.annotation.ManagedBean;
+import com.escr.report.entity.ReportDetails;
 
 /**
  * @author psikun
@@ -14,6 +11,7 @@ import javax.annotation.ManagedBean;
  */
 
 public interface ReportDetailsMapper extends BaseMapper<ReportDetails> {
+//    IPage<ReportDetails> list(Page<ReportDetails> page);
 
 }
 
