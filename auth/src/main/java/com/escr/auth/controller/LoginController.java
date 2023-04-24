@@ -27,10 +27,8 @@ public class LoginController {
     @PostMapping("/login")
     public Result<HashMap<String, String>> login(@RequestBody LoginRequest loginRequest) {
 
-        String token = loginService.login(loginRequest);
-        if (!token.isEmpty()) {
-            HashMap<String, String> map = new HashMap<>(1);
-            map.put("token", token);
+        HashMap<String, String> map = loginService.login(loginRequest);
+        if (!map.isEmpty()) {
             return Result.success(map, "登陆成功");
         } else {
             return Result.unauthorized("用户名或密码错误");

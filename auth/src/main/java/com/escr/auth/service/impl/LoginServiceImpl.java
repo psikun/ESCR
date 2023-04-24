@@ -14,6 +14,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -34,9 +35,11 @@ public class LoginServiceImpl implements LoginService {
 
     private String token = "";
 
+    private HashMap<String, String> userDetailMap = new HashMap<>();
+
 
     @Override
-    public String login(LoginRequest loginRequest) {
+    public HashMap<String, String> login(LoginRequest loginRequest) {
         log.info(loginRequest.toString());
         // 进行用户认证
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
@@ -50,11 +53,14 @@ public class LoginServiceImpl implements LoginService {
                 token = jwtTokenUtils.generateToken(username);
                 // 将用户信息存入redis
                 redisUtils.set("login:" + username, loginUser);
+                userDetailMap.put("username", username);
+                userDetailMap.put("token", token);
+
             }
         } catch (AuthenticationException e) {
-            log.warn("登录异常:{}",e.getMessage());
+            log.warn("登录异常:{}", e.getMessage());
         }
-        return token;
+        return userDetailMap;
     }
 
     @Override

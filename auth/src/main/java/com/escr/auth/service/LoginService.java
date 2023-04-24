@@ -2,6 +2,8 @@ package com.escr.auth.service;
 
 import com.escr.auth.dto.request.LoginRequest;
 
+import java.util.HashMap;
+
 /**
  * The interface Login service.
  *
@@ -15,7 +17,7 @@ public interface LoginService {
      * @param loginRequest the login request
      * @return the string
      */
-    String login(LoginRequest loginRequest);
+    HashMap<String,String> login(LoginRequest loginRequest);
 
     /**
      * Logout.

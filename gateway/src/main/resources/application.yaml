@@ -9,14 +9,14 @@ spring:
     gateway:
       routes:
         - id: report
-          uri: lb://report
+          uri: http://localhost:12001/report
           predicates:
             - Path=/report/**
         - id: area
-          uri: lb://area
+          uri: http://localhost:12002/area
           predicates:
             - Path=/area/**
         - id: auth
-          uri: lb://auth
+          uri: http://localhost:12000/auth
           predicates:
             - Path=/auth/**
