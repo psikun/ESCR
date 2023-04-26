@@ -1,0 +1,25 @@
+server:
+  port: 12003
+  servlet:
+    context-path: /mq
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: area
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: psikun
+    password: psikun
+
+
+logging:
+  level:
+    com.escr.rabbitmq: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS

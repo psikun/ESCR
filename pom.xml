@@ -14,6 +14,7 @@
         <module>common</module>
         <module>auth</module>
         <module>area</module>
+        <module>rabbitmq</module>
     </modules>
 
     <!--dependencyManagement 标签用于控制子模块的依赖版本等信息 -->
