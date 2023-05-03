@@ -59,7 +59,7 @@ public class ReportController {
     }
 
     @ApiOperation("删除指定报告")
-    @DeleteMapping("/delete/{reportId}")
+    @DeleteMapping("/{reportId}")
     public Result<String> deleteById(@PathVariable("reportId") Long reportId) {
         if (reportDetailsService.removeById(reportId)) {
             return Result.success(null, "删除成功");
