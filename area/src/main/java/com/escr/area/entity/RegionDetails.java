@@ -11,11 +11,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
  * @author psikun
  * @TableName ams_region_details
  */
-@TableName(value ="ams_region_details")
+@TableName(value = "ams_region_details")
 @Data
 public class RegionDetails implements Serializable {
     /**
@@ -24,30 +23,12 @@ public class RegionDetails implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long regionId;
 
-    /**
-     * 省级单位
-     */
-    private String province;
 
     /**
-     * 市级单位
+     * 详细地址
      */
-    private String city;
+    private String address;
 
-    /**
-     * 县级单位
-     */
-    private String county;
-
-    /**
-     * 镇级单位
-     */
-    private String town;
-
-    /**
-     * 具体地址
-     */
-    private String specific;
 
     /**
      * 风险等级(低风险地区-0，中风险地区-1，高风险地区-2)
@@ -82,13 +63,13 @@ public class RegionDetails implements Serializable {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
     /**
      * 更新时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 
     /**
