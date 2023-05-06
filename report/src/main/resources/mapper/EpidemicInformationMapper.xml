@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.escr.report.mapper.EpidemicInformationMapper">
+
+    <resultMap id="BaseResultMap" type="com.escr.report.entity.EpidemicInformation">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="newInfection" column="new_infection" jdbcType="INTEGER"/>
+            <result property="existingInfection" column="existing_infection" jdbcType="INTEGER"/>
+            <result property="recovered" column="recovered" jdbcType="INTEGER"/>
+            <result property="death" column="death" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,new_infection,existing_infection,
+        recovered,death,create_time,
+        update_time,deleted
+    </sql>
+</mapper>
