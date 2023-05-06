@@ -86,21 +86,40 @@ public class ReportDetails implements Serializable {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 
     private Date createTime;
 
     /**
      * 更新时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
+
+
+    /**
+     * 到达时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date arrivalTime;
+
+
+    /**
+     * 出发时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date departureTime;
+
+
+    /**
+     * 报备状态(0:待审核、1:已审核、2:已驳回)
+     */
+    private Date status;
 
     /**
      * 逻辑删除
      */
     private Boolean deleted;
-
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
