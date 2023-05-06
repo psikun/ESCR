@@ -16,7 +16,8 @@ import java.util.Objects;
  * @date 2023/04/18/ 20:11
  */
 
-@RestController
+@RequestMapping("/region")
+@RestController()
 public class RegionController {
 
     @Autowired
