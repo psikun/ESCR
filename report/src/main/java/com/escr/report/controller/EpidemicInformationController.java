@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -26,6 +28,17 @@ public class EpidemicInformationController {
         String today = DateUtil.today();
         EpidemicInformation todayInformation = epidemicInformationService.getTodayInformation(today);
         return Result.success(todayInformation);
+    }
+
+    @ApiOperation("获取一周疫情数据")
+    @PostMapping("/week")
+    public Result<List<EpidemicInformation>> getWeekInformation(@RequestBody List<String> week) {
+        ArrayList<EpidemicInformation> epidemicInformation = new ArrayList<>();
+        for (String day : week) {
+            EpidemicInformation todayInformation = epidemicInformationService.getTodayInformation(day);
+            epidemicInformation.add(todayInformation);
+        }
+        return Result.success(epidemicInformation);
     }
 
 
