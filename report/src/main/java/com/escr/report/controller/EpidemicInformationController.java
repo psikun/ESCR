@@ -1,5 +1,6 @@
 package com.escr.report.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.escr.common.entity.Result;
 import com.escr.report.entity.EpidemicInformation;
 import com.escr.report.service.impl.EpidemicInformationServiceImpl;
@@ -18,6 +19,14 @@ public class EpidemicInformationController {
 
     @Autowired
     private EpidemicInformationServiceImpl epidemicInformationService;
+
+    @ApiOperation("获取今日疫情数据")
+    @GetMapping("/today")
+    public Result<EpidemicInformation> getTodayInformation() {
+        String today = DateUtil.today();
+        EpidemicInformation todayInformation = epidemicInformationService.getTodayInformation(today);
+        return Result.success(todayInformation);
+    }
 
 
     @ApiOperation("通过id获取疫情信息")
@@ -49,7 +58,7 @@ public class EpidemicInformationController {
     }
 
     @ApiOperation("删除指定信息")
-    @DeleteMapping("/{reportId}")
+    @DeleteMapping("/{id}")
     public Result<String> deleteById(@PathVariable("id") Long id) {
         if (epidemicInformationService.removeById(id)) {
             return Result.success(null, "删除成功");
