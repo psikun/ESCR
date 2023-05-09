@@ -2,6 +2,7 @@ package com.escr.report.controller;
 
 import com.escr.common.entity.Result;
 import com.escr.report.entity.ReportDetails;
+import com.escr.report.feign.AreaFeign;
 import com.escr.report.service.impl.ReportDetailsServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,17 @@ public class ReportController {
     @Autowired
     private ReportDetailsServiceImpl reportDetailsService;
 
+    @Autowired
+    private AreaFeign areaFeign;
+
     @ApiOperation("获取report集合")
     @GetMapping("list")
     public Result<List<ReportDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
                                             @RequestParam(defaultValue = "10") Integer pageSize) {
         List<ReportDetails> list = reportDetailsService.list(pageNum, pageSize);
+        for (ReportDetails report : list) {
+            report.setRiskLevel(areaFeign.riskLevel(report.getSource()).getData());
+        }
         if (!Objects.isNull(list)) {
             return Result.success(list);
         }
@@ -34,6 +41,7 @@ public class ReportController {
     @GetMapping("/{reportId}")
     public Result<ReportDetails> getReportDetailById(@PathVariable("reportId") Integer reportId) {
         ReportDetails reportDetail = reportDetailsService.getById(reportId);
+        reportDetail.setRiskLevel(areaFeign.riskLevel(reportDetail.getSource()).getData());
         if (!Objects.isNull(reportDetail)) {
             return Result.success(reportDetail);
         }

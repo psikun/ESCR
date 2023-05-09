@@ -12,4 +12,6 @@ import java.util.List;
 */
 public interface RegionDetailsService extends IService<RegionDetails> {
     List<RegionDetails> list(Integer pageNum, Integer pageSize);
+
+    String getRiskLevel(String address);
 }

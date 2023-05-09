@@ -44,7 +44,7 @@ public class RegionController {
         return Result.failed();
     }
 
-    @ApiOperation("添加region报告")
+    @ApiOperation("添加region信息")
     @PostMapping("/add")
     public Result<String> add(@RequestBody RegionDetails regionDetail) {
         if (regionDetailsService.save(regionDetail)) {
@@ -53,7 +53,7 @@ public class RegionController {
         return Result.failed("添加失败");
     }
 
-    @ApiOperation("修改region报告")
+    @ApiOperation("修改region信息")
     @PutMapping("/update")
     public Result<String> update(@RequestBody RegionDetails regionDetail) {
         if (regionDetailsService.updateById(regionDetail)) {
@@ -69,5 +69,16 @@ public class RegionController {
             return Result.success(null, "删除成功");
         }
         return Result.failed("删除失败");
+    }
+
+    @ApiOperation("判定风险等级")
+    @PostMapping("/getRiskLevel")
+    public Result<String> getRiskLevel(@RequestParam(value = "address") String address) {
+
+        String riskLevel = regionDetailsService.getRiskLevel(address);
+        if (!Objects.isNull(riskLevel)) {
+            return Result.success(riskLevel);
+        }
+        return Result.failed("查找失败");
     }
 }

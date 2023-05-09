@@ -78,6 +78,9 @@ public class ReportDetails implements Serializable {
      */
     private Boolean nucleicAcid;
 
+    @TableField(exist = false)
+    private Integer riskLevel = 0;
+
     /**
      * 疫苗接种数量
      */

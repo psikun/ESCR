@@ -1,5 +1,6 @@
 package com.escr.area.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -28,6 +29,14 @@ public class RegionDetailsServiceImpl extends ServiceImpl<RegionDetailsMapper, R
         Page<RegionDetails> page = new Page<>(pageNum, pageSize);
         IPage<RegionDetails> userPage = regionDetailsMapper.selectPage(page, null);
         return userPage.getRecords();
+    }
+
+    @Override
+    public String getRiskLevel(String address) {
+        QueryWrapper<RegionDetails> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("address", address);
+        RegionDetails regionDetails = regionDetailsMapper.selectOne(queryWrapper);
+        return regionDetails.getRiskLevel();
     }
 }
 
