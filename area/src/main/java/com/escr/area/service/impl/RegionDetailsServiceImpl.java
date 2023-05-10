@@ -32,7 +32,7 @@ public class RegionDetailsServiceImpl extends ServiceImpl<RegionDetailsMapper, R
     }
 
     @Override
-    public String getRiskLevel(String address) {
+    public Integer getRiskLevel(String address) {
         QueryWrapper<RegionDetails> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("address", address);
         RegionDetails regionDetails = regionDetailsMapper.selectOne(queryWrapper);

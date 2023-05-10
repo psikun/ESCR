@@ -75,7 +75,7 @@ public class RegionController {
     @PostMapping("/getRiskLevel")
     public Result<String> getRiskLevel(@RequestParam(value = "address") String address) {
 
-        String riskLevel = regionDetailsService.getRiskLevel(address);
+        String riskLevel = regionDetailsService.getRiskLevel(address).toString();
         if (!Objects.isNull(riskLevel)) {
             return Result.success(riskLevel);
         }

@@ -28,9 +28,9 @@ public class ReportController {
     public Result<List<ReportDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
                                             @RequestParam(defaultValue = "10") Integer pageSize) {
         List<ReportDetails> list = reportDetailsService.list(pageNum, pageSize);
-        for (ReportDetails report : list) {
-            report.setRiskLevel(areaFeign.riskLevel(report.getSource()).getData());
-        }
+//        for (ReportDetails report : list) {
+//            report.setRiskLevel(areaFeign.riskLevel(report.getSource()).getData());
+//        }
         if (!Objects.isNull(list)) {
             return Result.success(list);
         }
@@ -41,7 +41,7 @@ public class ReportController {
     @GetMapping("/{reportId}")
     public Result<ReportDetails> getReportDetailById(@PathVariable("reportId") Integer reportId) {
         ReportDetails reportDetail = reportDetailsService.getById(reportId);
-        reportDetail.setRiskLevel(areaFeign.riskLevel(reportDetail.getSource()).getData());
+//        reportDetail.setRiskLevel(areaFeign.riskLevel(reportDetail.getSource()).getData());
         if (!Objects.isNull(reportDetail)) {
             return Result.success(reportDetail);
         }

@@ -15,7 +15,6 @@ import javax.swing.plaf.synth.Region;
  */
 @FeignClient(name = "area")
 public interface AreaFeign {
-
-    @PostMapping("/area/getRiskLevel")
-    Result<Integer> riskLevel(@RequestParam String address);
+    @PostMapping("/getRiskLevel")
+    Result<Integer> riskLevel(@RequestBody String address);
 }
