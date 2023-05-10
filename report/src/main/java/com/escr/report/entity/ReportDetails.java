@@ -103,21 +103,21 @@ public class ReportDetails implements Serializable {
     /**
      * 到达时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat( timezone = "GMT+8")
     private Date arrivalTime;
 
 
     /**
      * 出发时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat( timezone = "GMT+8")
     private Date departureTime;
 
 
     /**
      * 报备状态(0:待审核、1:已审核、2:已驳回)
      */
-    private Date status;
+    private Integer status;
 
     /**
      * 逻辑删除
