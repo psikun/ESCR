@@ -3,6 +3,7 @@ package com.escr.report.controller;
 import com.escr.common.entity.Result;
 import com.escr.report.entity.ReportDetails;
 import com.escr.report.feign.AreaFeign;
+import com.escr.report.model.dto.SearchReportRequest;
 import com.escr.report.service.impl.ReportDetailsServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,16 @@ public class ReportController {
             return Result.success(null, "删除成功");
         }
         return Result.failed("删除失败");
+    }
+
+
+    @ApiOperation("搜索报告")
+    @PostMapping("/search")
+    public Result<List<ReportDetails>> search(@RequestBody SearchReportRequest searchReportRequest) {
+        List<ReportDetails> list = reportDetailsService.search(searchReportRequest);
+        if (!Objects.isNull(list)) {
+            return Result.success(list, "查询成功");
+        }
+        return Result.failed("查询失败");
     }
 }

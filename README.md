@@ -19,4 +19,7 @@
 - [ ] 导出excal表格
 - [ ] 筛选数据
 
-
+## 三、Swagger
+* Report: http://localhost:12001/report/swagger-ui/doc.html
+* Auth: http://localhost:12000/auth/swagger-ui/doc.html
+* Area: http://localhost:12002/area/swagger-ui/doc.html
