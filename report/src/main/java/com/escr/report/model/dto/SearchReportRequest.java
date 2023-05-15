@@ -32,6 +32,12 @@ public class SearchReportRequest {
 
 
     /**
+     * 始发地风险等级
+     */
+    private Integer sourceRiskLevel;
+
+
+    /**
      * 报备状态(0:待审核、1:已审核、2:已驳回)
      */
     private Integer status;

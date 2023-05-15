@@ -5,12 +5,14 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.escr.area.entity.RegionDetails;
+import com.escr.area.model.dto.SearchRegionRequest;
 import com.escr.area.service.RegionDetailsService;
 import com.escr.area.mapper.RegionDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author psikun
@@ -37,6 +39,23 @@ public class RegionDetailsServiceImpl extends ServiceImpl<RegionDetailsMapper, R
         queryWrapper.eq("address", address);
         RegionDetails regionDetails = regionDetailsMapper.selectOne(queryWrapper);
         return regionDetails.getRiskLevel();
+    }
+
+    @Override
+    public List<RegionDetails> search(SearchRegionRequest searchRegionRequest) {
+
+        QueryWrapper<RegionDetails> wrapper = new QueryWrapper<>();
+
+        if (!Objects.isNull(searchRegionRequest.getRegionId())) {
+            wrapper.eq("region_id", searchRegionRequest.getRegionId());
+        }
+
+        if (!Objects.isNull(searchRegionRequest.getRiskLevel())) {
+            wrapper.eq("risk_level", searchRegionRequest.getRiskLevel());
+        }
+
+        List<RegionDetails> list = regionDetailsMapper.selectList(wrapper);
+        return list;
     }
 }
 

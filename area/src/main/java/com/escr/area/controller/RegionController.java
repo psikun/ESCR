@@ -3,6 +3,7 @@ package com.escr.area.controller;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import com.escr.area.entity.RegionDetails;
+import com.escr.area.model.dto.SearchRegionRequest;
 import com.escr.area.service.RegionDetailsService;
 import com.escr.common.entity.Result;
 import io.swagger.annotations.ApiOperation;
@@ -86,6 +87,18 @@ public class RegionController {
         }
         return Result.failed("查找失败");
     }
+
+    @ApiOperation("搜索风险地区")
+    @PostMapping("/search")
+    public Result<List<RegionDetails>> search(@RequestBody SearchRegionRequest searchRegionRequest) {
+        List<RegionDetails> list = regionDetailsService.search(searchRegionRequest);
+        if (!Objects.isNull(list)) {
+            return Result.success(list, "查询成功");
+        }
+        return Result.failed("查询失败");
+    }
+
+
 
     @GetMapping("/export")
     public void export(HttpServletResponse response) throws Exception {

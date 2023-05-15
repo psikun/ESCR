@@ -107,7 +107,7 @@ public class ReportController {
         writer.write(list, true);
 
         //设置浏览器响应的格式
-        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
+        response.setContentType("application/vnd.ms-excel;charset=utf-8");
         String fileName = URLEncoder.encode("报备信息", "UTF-8");
         response.setHeader("Content-Disposition", "attachment;filename=" + fileName + ".xlsx");
 

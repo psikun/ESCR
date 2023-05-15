@@ -78,8 +78,7 @@ public class ReportDetails implements Serializable {
      */
     private Boolean nucleicAcid;
 
-    @TableField(exist = false)
-    private Integer riskLevel = 0;
+    private Integer sourceRiskLevel;
 
     /**
      * 疫苗接种数量
@@ -103,14 +102,14 @@ public class ReportDetails implements Serializable {
     /**
      * 到达时间
      */
-    @JsonFormat( timezone = "GMT+8")
+    @JsonFormat(timezone = "GMT+8")
     private Date arrivalTime;
 
 
     /**
      * 出发时间
      */
-    @JsonFormat( timezone = "GMT+8")
+    @JsonFormat(timezone = "GMT+8")
     private Date departureTime;
 
 

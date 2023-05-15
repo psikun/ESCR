@@ -42,6 +42,9 @@ public class ReportDetailsServiceImpl extends ServiceImpl<ReportDetailsMapper, R
         if (searchReportRequest.getName() != "" && !Objects.isNull(searchReportRequest.getName())) {
             wrapper.eq("name", searchReportRequest.getName());
         }
+        if (!Objects.isNull(searchReportRequest.getSourceRiskLevel())) {
+            wrapper.eq("source_risk_level", searchReportRequest.getSourceRiskLevel());
+        }
         if (!Objects.isNull(searchReportRequest.getNucleicAcid())) {
             wrapper.eq("nucleic_acid", searchReportRequest.getNucleicAcid());
         }
