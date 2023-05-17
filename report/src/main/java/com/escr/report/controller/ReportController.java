@@ -5,7 +5,7 @@ import cn.hutool.poi.excel.ExcelWriter;
 import com.escr.common.entity.Result;
 import com.escr.report.entity.ReportDetails;
 import com.escr.report.feign.AreaFeign;
-import com.escr.report.model.dto.SearchReportRequest;
+import com.escr.report.model.dto.request.SearchReportRequest;
 import com.escr.report.service.impl.ReportDetailsServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 

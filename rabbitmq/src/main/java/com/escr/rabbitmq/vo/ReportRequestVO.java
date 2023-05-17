@@ -1,8 +1,11 @@
 package com.escr.rabbitmq.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * @author psikun
@@ -68,4 +71,22 @@ public class ReportRequestVO {
      * 疫苗接种数量
      */
     private Integer vaccinationQuantity;
+
+    /**
+     * 到达时间
+     */
+    @JsonFormat(timezone = "GMT+8")
+    private Date arrivalTime;
+
+
+    /**
+     * 出发时间
+     */
+    @JsonFormat(timezone = "GMT+8")
+    private Date departureTime;
+
+    /**
+     * 始发地风险等级
+     */
+    private Integer SourceRiskLevel;
 }

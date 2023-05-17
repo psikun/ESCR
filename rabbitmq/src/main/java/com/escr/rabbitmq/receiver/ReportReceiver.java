@@ -2,6 +2,7 @@ package com.escr.rabbitmq.receiver;
 
 import com.escr.rabbitmq.feign.ReportFeign;
 import com.escr.rabbitmq.vo.ReportRequestVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Slf4j
 public class ReportReceiver {
 
     @Autowired
@@ -23,6 +25,7 @@ public class ReportReceiver {
 
     @RabbitListener(queues = "postReportQueue")
     public void receive(ReportRequestVO request) {
+        log.info(request.toString());
         reportFeign.addByClient(request);
     }
 

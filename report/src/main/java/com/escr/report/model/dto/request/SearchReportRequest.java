@@ -1,4 +1,4 @@
-package com.escr.report.model.dto;
+package com.escr.report.model.dto.request;
 
 import lombok.Data;
 

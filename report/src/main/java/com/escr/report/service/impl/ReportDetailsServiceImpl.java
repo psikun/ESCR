@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.escr.report.entity.ReportDetails;
 import com.escr.report.mapper.ReportDetailsMapper;
-import com.escr.report.model.dto.SearchReportRequest;
+import com.escr.report.model.dto.request.SearchReportRequest;
 import com.escr.report.service.ReportDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,7 @@ package com.escr.report.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.escr.report.entity.ReportDetails;
-import com.escr.report.model.dto.SearchReportRequest;
+import com.escr.report.model.dto.request.SearchReportRequest;
 
 import java.util.List;
 
