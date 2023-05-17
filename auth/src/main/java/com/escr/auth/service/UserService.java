@@ -4,6 +4,8 @@ package com.escr.auth.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.escr.auth.entity.User;
 
+import java.util.List;
+
 /**
  * @author psikun
  * @description 针对表【ums_user(用户信息表)】的数据库操作Service
@@ -11,4 +13,5 @@ import com.escr.auth.entity.User;
  */
 public interface UserService extends IService<User> {
 
+    List<User> list(Integer pageNum, Integer pageSize);
 }

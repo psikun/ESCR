@@ -34,9 +34,6 @@ public class ReportController {
     public Result<List<ReportDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
                                             @RequestParam(defaultValue = "10") Integer pageSize) {
         List<ReportDetails> list = reportDetailsService.list(pageNum, pageSize);
-//        for (ReportDetails report : list) {
-//            report.setRiskLevel(areaFeign.riskLevel(report.getSource()).getData());
-//        }
         if (!Objects.isNull(list)) {
             return Result.success(list);
         }
