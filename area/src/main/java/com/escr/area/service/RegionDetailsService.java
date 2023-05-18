@@ -1,5 +1,6 @@
 package com.escr.area.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.escr.area.entity.RegionDetails;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.escr.area.model.dto.SearchRegionRequest;
@@ -12,9 +13,9 @@ import java.util.List;
 * @createDate 2023-04-17 12:57:10
 */
 public interface RegionDetailsService extends IService<RegionDetails> {
-    List<RegionDetails> list(Integer pageNum, Integer pageSize);
+    IPage<RegionDetails> list(Integer pageNum, Integer pageSize);
 
     Integer getRiskLevel(String address);
 
-    List<RegionDetails> search(SearchRegionRequest searchRegionRequest);
+    IPage<RegionDetails> search(SearchRegionRequest searchRegionRequest);
 }

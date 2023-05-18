@@ -2,6 +2,7 @@ package com.escr.area.controller;
 
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.escr.area.entity.RegionDetails;
 import com.escr.area.model.dto.SearchRegionRequest;
 import com.escr.area.service.RegionDetailsService;
@@ -31,9 +32,9 @@ public class RegionController {
 
     @ApiOperation("获取region集合")
     @GetMapping("list")
-    public Result<List<RegionDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
-                                            @RequestParam(defaultValue = "10") Integer pageSize) {
-        List<RegionDetails> list = regionDetailsService.list(pageNum, pageSize);
+    public Result<IPage<RegionDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                                             @RequestParam(defaultValue = "10") Integer pageSize) {
+        IPage<RegionDetails> list = regionDetailsService.list(pageNum, pageSize);
         if (!Objects.isNull(list)) {
             return Result.success(list);
         }
@@ -68,7 +69,7 @@ public class RegionController {
         return Result.failed("修改失败");
     }
 
-    @ApiOperation("删除指定报告")
+    @ApiOperation("删除指定地区")
     @DeleteMapping("/delete/{regionId}")
     public Result<String> deleteById(@PathVariable("regionId") Long regionId) {
         if (regionDetailsService.removeById(regionId)) {
@@ -90,14 +91,13 @@ public class RegionController {
 
     @ApiOperation("搜索风险地区")
     @PostMapping("/search")
-    public Result<List<RegionDetails>> search(@RequestBody SearchRegionRequest searchRegionRequest) {
-        List<RegionDetails> list = regionDetailsService.search(searchRegionRequest);
+    public Result<IPage<RegionDetails>> search(@RequestBody SearchRegionRequest searchRegionRequest) {
+        IPage<RegionDetails> list = regionDetailsService.search(searchRegionRequest);
         if (!Objects.isNull(list)) {
             return Result.success(list, "查询成功");
         }
         return Result.failed("查询失败");
     }
-
 
 
     @GetMapping("/export")

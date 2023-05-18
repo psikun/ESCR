@@ -27,14 +27,14 @@ public class ReportDetailsServiceImpl extends ServiceImpl<ReportDetailsMapper, R
     private ReportDetailsMapper reportDetailsMapper;
 
     @Override
-    public List<ReportDetails> list(Integer pageNum, Integer pageSize) {
+    public IPage<ReportDetails> list(Integer pageNum, Integer pageSize) {
         Page<ReportDetails> page = new Page<>(pageNum, pageSize);
-        IPage<ReportDetails> userPage = reportDetailsMapper.selectPage(page, null);
-        return userPage.getRecords();
+        IPage<ReportDetails> reportPage = reportDetailsMapper.selectPage(page, null);
+        return reportPage;
     }
 
     @Override
-    public List<ReportDetails> search(SearchReportRequest searchReportRequest) {
+    public IPage<ReportDetails> search(SearchReportRequest searchReportRequest) {
         QueryWrapper<ReportDetails> wrapper = new QueryWrapper<>();
         if (!Objects.isNull(searchReportRequest.getReportId())) {
             wrapper.eq("report_id", searchReportRequest.getReportId());
@@ -54,8 +54,8 @@ public class ReportDetailsServiceImpl extends ServiceImpl<ReportDetailsMapper, R
         if (!Objects.isNull(searchReportRequest.getStatus())) {
             wrapper.eq("status", searchReportRequest.getStatus());
         }
-        List<ReportDetails> searchResult = reportDetailsMapper.selectList(wrapper);
-        return searchResult;
+        Page page = new Page<>(searchReportRequest.getPageNum(), searchReportRequest.getPageSize());
+        return reportDetailsMapper.selectPage(page,wrapper);
     }
 }
 

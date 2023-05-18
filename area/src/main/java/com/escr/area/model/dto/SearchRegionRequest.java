@@ -14,4 +14,8 @@ public class SearchRegionRequest {
     private Long regionId;
 
     private Integer riskLevel;
+
+    private Integer pageNum;
+
+    private Integer pageSize;
 }

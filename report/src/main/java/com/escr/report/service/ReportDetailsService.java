@@ -1,5 +1,6 @@
 package com.escr.report.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.escr.report.entity.ReportDetails;
 import com.escr.report.model.dto.request.SearchReportRequest;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public interface ReportDetailsService extends IService<ReportDetails> {
 
-    List<ReportDetails> list(Integer pageNum, Integer pageSize);
+    IPage<ReportDetails> list(Integer pageNum, Integer pageSize);
 
-    List<ReportDetails> search(SearchReportRequest searchReportRequest);
+    IPage<ReportDetails> search(SearchReportRequest searchReportRequest);
 }

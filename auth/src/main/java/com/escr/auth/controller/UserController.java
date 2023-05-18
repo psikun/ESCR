@@ -1,13 +1,13 @@
 package com.escr.auth.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.escr.auth.entity.User;
+import com.escr.auth.model.dto.UserRequest;
 import com.escr.auth.service.impl.UserServiceImpl;
 import com.escr.common.entity.Result;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -26,11 +26,22 @@ public class UserController {
 
     @ApiOperation("获取用户集合")
     @GetMapping("list")
-    public Result<List<User>> list(@RequestParam(defaultValue = "1") Integer pageNum,
-                                            @RequestParam(defaultValue = "10") Integer pageSize) {
-        List<User> list = userService.list(pageNum, pageSize);
+    public Result<IPage<User>> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                                    @RequestParam(defaultValue = "10") Integer pageSize) {
+        IPage<User> list = userService.list(pageNum, pageSize);
         if (!Objects.isNull(list)) {
             return Result.success(list);
+        }
+        return Result.failed("查询失败");
+    }
+
+
+    @ApiOperation("搜索用户")
+    @PostMapping("/search")
+    public Result<IPage<User>> search(@RequestBody UserRequest userRequest) {
+        IPage<User> list = userService.search(userRequest);
+        if (!Objects.isNull(list)) {
+            return Result.success(list, "查询成功");
         }
         return Result.failed("查询失败");
     }

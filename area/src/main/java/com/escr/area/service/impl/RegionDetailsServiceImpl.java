@@ -27,10 +27,10 @@ public class RegionDetailsServiceImpl extends ServiceImpl<RegionDetailsMapper, R
     private RegionDetailsMapper regionDetailsMapper;
 
     @Override
-    public List<RegionDetails> list(Integer pageNum, Integer pageSize) {
+    public IPage<RegionDetails> list(Integer pageNum, Integer pageSize) {
         Page<RegionDetails> page = new Page<>(pageNum, pageSize);
-        IPage<RegionDetails> userPage = regionDetailsMapper.selectPage(page, null);
-        return userPage.getRecords();
+        IPage<RegionDetails> regionPage = regionDetailsMapper.selectPage(page, null);
+        return regionPage;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class RegionDetailsServiceImpl extends ServiceImpl<RegionDetailsMapper, R
     }
 
     @Override
-    public List<RegionDetails> search(SearchRegionRequest searchRegionRequest) {
+    public IPage<RegionDetails> search(SearchRegionRequest searchRegionRequest) {
 
         QueryWrapper<RegionDetails> wrapper = new QueryWrapper<>();
 
@@ -54,7 +54,8 @@ public class RegionDetailsServiceImpl extends ServiceImpl<RegionDetailsMapper, R
             wrapper.eq("risk_level", searchRegionRequest.getRiskLevel());
         }
 
-        List<RegionDetails> list = regionDetailsMapper.selectList(wrapper);
+        Page<RegionDetails> page = new Page<>(searchRegionRequest.getPageNum(), searchRegionRequest.getPageSize());
+        IPage<RegionDetails> list = regionDetailsMapper.selectPage(page,wrapper);
         return list;
     }
 }

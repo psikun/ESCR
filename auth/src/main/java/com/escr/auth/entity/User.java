@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 /**
@@ -37,9 +38,9 @@ public class User implements Serializable {
     private String nickName;
 
     /**
-     * 用户类型（00系统用户）
+     * 用户类型（0系统用户）
      */
-    private String userType;
+    private Integer userType;
 
     /**
      * 用户邮箱
@@ -54,7 +55,7 @@ public class User implements Serializable {
     /**
      * 用户性别（0男 1女 2未知）
      */
-    private String sex;
+    private Integer sex;
 
     /**
      * 头像地址
@@ -67,14 +68,14 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * 帐号状态（0正常 1停用）
+     * 账号状态（0正常 1停用）
      */
-    private String status;
+    private Integer status;
 
     /**
      * 删除标志（0代表存在 1代表删除）
      */
-    private String deleted;
+    private Integer deleted;
 
     /**
      * 最后登录IP

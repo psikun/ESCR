@@ -2,6 +2,7 @@ package com.escr.report.controller;
 
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.escr.common.entity.Result;
 import com.escr.report.entity.ReportDetails;
 import com.escr.report.feign.AreaFeign;
@@ -31,9 +32,10 @@ public class ReportController {
 
     @ApiOperation("获取report集合")
     @GetMapping("list")
-    public Result<List<ReportDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
+    public Result<IPage<ReportDetails>> list(@RequestParam(defaultValue = "1") Integer pageNum,
                                             @RequestParam(defaultValue = "10") Integer pageSize) {
-        List<ReportDetails> list = reportDetailsService.list(pageNum, pageSize);
+
+        IPage<ReportDetails> list = reportDetailsService.list(pageNum, pageSize);
         if (!Objects.isNull(list)) {
             return Result.success(list);
         }
@@ -81,8 +83,8 @@ public class ReportController {
 
     @ApiOperation("搜索报告")
     @PostMapping("/search")
-    public Result<List<ReportDetails>> search(@RequestBody SearchReportRequest searchReportRequest) {
-        List<ReportDetails> list = reportDetailsService.search(searchReportRequest);
+    public Result<IPage<ReportDetails>> search(@RequestBody SearchReportRequest searchReportRequest) {
+        IPage<ReportDetails> list = reportDetailsService.search(searchReportRequest);
         if (!Objects.isNull(list)) {
             return Result.success(list, "查询成功");
         }

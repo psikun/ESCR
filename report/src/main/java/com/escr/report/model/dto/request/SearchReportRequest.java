@@ -42,6 +42,8 @@ public class SearchReportRequest {
      */
     private Integer status;
 
+    private Integer pageNum;
 
+    private Integer pageSize;
 
 }

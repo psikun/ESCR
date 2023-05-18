@@ -1,8 +1,10 @@
 package com.escr.auth.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.escr.auth.entity.User;
+import com.escr.auth.model.dto.UserRequest;
 
 import java.util.List;
 
@@ -13,5 +15,7 @@ import java.util.List;
  */
 public interface UserService extends IService<User> {
 
-    List<User> list(Integer pageNum, Integer pageSize);
+    IPage<User> list(Integer pageNum, Integer pageSize);
+
+    IPage<User> search(UserRequest userRequest);
 }
