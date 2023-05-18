@@ -70,4 +70,11 @@ public class CommunityController {
         }
         return Result.failed("删除失败");
     }
+
+    @ApiOperation("通过用户名获取community信息")
+    @PostMapping("/getCommunityByUsername")
+    public Result<CommunityDetails> getCommunityByUsername(@RequestBody String username) {
+        CommunityDetails community = communityDetailsService.getCommunityByUsername(username);
+        return Result.success(community);
+    }
 }

@@ -2,6 +2,7 @@ package com.escr.area.mapper;
 
 import com.escr.area.entity.CommunityDetails;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
 * @author psikun
@@ -11,6 +12,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface CommunityDetailsMapper extends BaseMapper<CommunityDetails> {
 
+
+    @Select("select * from escr_area.ams_community_details where id=(select community_id from escr_auth.ums_user where username = #{username})")
+    CommunityDetails getCommunityByUsername(String username);
 }
 
 

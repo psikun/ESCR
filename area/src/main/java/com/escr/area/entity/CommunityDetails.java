@@ -44,6 +44,11 @@ public class CommunityDetails implements Serializable {
     private String address;
 
     /**
+     * 社区地址
+     */
+    private String type;
+
+    /**
      * 创建时间
      */
     private Date createTime;

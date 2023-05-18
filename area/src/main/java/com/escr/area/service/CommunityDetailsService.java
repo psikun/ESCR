@@ -12,4 +12,7 @@ import java.util.List;
 */
 public interface CommunityDetailsService extends IService<CommunityDetails> {
     List<CommunityDetails> list(Integer pageNum, Integer pageSize);
+
+    CommunityDetails getCommunityByUsername(String username);
+
 }

@@ -27,6 +27,8 @@ public class User implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
+    private Long CommunityId;
+
     /**
      * 用户账号
      */

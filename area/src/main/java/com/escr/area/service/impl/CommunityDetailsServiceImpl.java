@@ -22,6 +22,7 @@ public class CommunityDetailsServiceImpl extends ServiceImpl<CommunityDetailsMap
     @Autowired
     private CommunityDetailsMapper communityDetailsMapper;
 
+
     @Override
     public List<CommunityDetails> list(Integer pageNum, Integer pageSize) {
 
@@ -29,6 +30,12 @@ public class CommunityDetailsServiceImpl extends ServiceImpl<CommunityDetailsMap
         Page<CommunityDetails> page = new Page<>(pageNum, pageSize);
         IPage<CommunityDetails> userPage = communityDetailsMapper.selectPage(page, null);
         return userPage.getRecords();
+    }
+
+    @Override
+    public CommunityDetails getCommunityByUsername(String username) {
+
+        return communityDetailsMapper.getCommunityByUsername(username);
     }
 }
 
