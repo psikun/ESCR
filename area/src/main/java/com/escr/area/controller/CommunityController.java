@@ -72,8 +72,8 @@ public class CommunityController {
     }
 
     @ApiOperation("通过用户名获取community信息")
-    @PostMapping("/getCommunityByUsername")
-    public Result<CommunityDetails> getCommunityByUsername(@RequestBody String username) {
+    @GetMapping("/getCommunityByUsername")
+    public Result<CommunityDetails> getCommunityByUsername(@RequestParam String username) {
         CommunityDetails community = communityDetailsService.getCommunityByUsername(username);
         return Result.success(community);
     }
